@@ -39,7 +39,7 @@ impl RefDB {
     }
 
     pub fn lookup(&self, ref_url: &Url) -> Option<&Referer> {
-        if ref_url.scheme() != "http" || ref_url.scheme() != "https" {
+        if ref_url.scheme() != "http" && ref_url.scheme() != "https" {
             return None;
         }
         let host = match ref_url.host_str() {
@@ -58,11 +58,11 @@ impl RefDB {
         include_path: bool,
     ) -> Option<&Referer> {
         let mut keys = vec![host.to_string() + &path, host.to_string()];
-        if include_path {
+        if include_path && path.matches('/').count() > 1 {
             let mut path_parts = path.split('/');
             path_parts.next();
             if let Some(p) = path_parts.next() {
-                keys.push(host.to_string() + p);
+                keys.push(host.to_string() + "/" + p);
             }
         }
         for k in keys {

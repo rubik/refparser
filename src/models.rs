@@ -5,6 +5,7 @@ pub type Domain = String;
 pub type Medium = String;
 pub type Source = String;
 
+#[derive(Debug, Clone)]
 pub struct Referer {
     pub source: Source,
     pub medium: Medium,
