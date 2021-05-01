@@ -6,11 +6,11 @@ use crate::error::Result;
 use crate::models::{Domain, Referer, Referers};
 
 #[derive(Default)]
-pub struct RefDB {
+pub struct RefDb {
     pub data: HashMap<Domain, Referer>,
 }
 
-impl RefDB {
+impl RefDb {
     pub fn from_json(path: &str) -> Result<Self> {
         let file = File::open(path)?;
         let ref_data: Referers = serde_json::from_reader(file)?;
