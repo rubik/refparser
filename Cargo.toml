@@ -3,6 +3,8 @@ name = "refparser"
 version = "0.1.0"
 authors = ["Michele Lacchia <michelelacchia@gmail.com>"]
 edition = "2018"
+license = "MIT"
+description = "HTTP referer parsing using the database from the snowplow-referer-parser project."
 
 [dependencies]
 url = "2.2"
