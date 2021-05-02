@@ -57,7 +57,7 @@ impl RefDb {
         path: &str,
         include_path: bool,
     ) -> Option<&Referer> {
-        let mut keys = vec![host.to_string() + &path, host.to_string()];
+        let mut keys = vec![host.to_string() + path, host.to_string()];
         if include_path && path.matches('/').count() > 1 {
             let mut path_parts = path.split('/');
             path_parts.next();
